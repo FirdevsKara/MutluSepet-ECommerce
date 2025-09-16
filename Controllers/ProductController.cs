@@ -38,7 +38,7 @@ namespace MutluSepet.Controllers
                             .ToList();
 
             // ViewData ile başlığı gönder
-            ViewData["Title"] = $"Ürünler ({category.Name})";
+            ViewData["Title"] = $" ({category.Name})";
 
             return View("Index", products); // Index view'ını kullanabiliriz
         }

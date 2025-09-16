@@ -8,7 +8,7 @@ using MutluSepet.Data;
 
 namespace MutluSepet.Controllers
 {
-    [Authorize] // Giriş yapmış kullanıcılar erişebilir
+    //[Authorize] // Giriş yapmış kullanıcılar erişebilir
     public class FavoriteController : Controller
     {
         private readonly ApplicationDbContext _context;

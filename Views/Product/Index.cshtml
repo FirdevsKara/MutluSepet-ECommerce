@@ -3,9 +3,9 @@
 @inject SignInManager<MutluSepet.Models.ApplicationUser> SignInManager
 
 <!-- Dinamik başlık: Tüm ürünler veya kategori adı -->
-<h2 class="fw-bold">
-    @ViewData["Title"] ?? "Ürünler"
-</h2>
+ <h2 class="fw-bold">
+    @ViewData["Title"] Ürünler
+</h2> 
 
 <div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
     @foreach (var item in Model)
