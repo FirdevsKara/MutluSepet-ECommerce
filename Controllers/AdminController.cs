@@ -19,6 +19,16 @@ namespace MutluSepet.Controllers
         }
 
         // 🟢 Ürünleri listeleme sayfası
+        // public IActionResult Products()
+        // {
+        //     var products = _context.Products
+        //         .Include(p => p.Category) // Ürünün kategorisini de çek
+        //         .ToList();
+
+        //     ViewData["Title"] = "Ürünler";
+        //     return View(products); // Views/Admin/Products.cshtml kullanılacak
+        // }
+
         public IActionResult Products()
         {
             var products = _context.Products
@@ -26,21 +36,51 @@ namespace MutluSepet.Controllers
                 .ToList();
 
             ViewData["Title"] = "Ürünler";
+
+            // Kategorileri ViewBag ile view'e gönder
+            ViewBag.Categories = _context.Categories.ToList();
+
             return View(products); // Views/Admin/Products.cshtml kullanılacak
         }
-
-        // ➕ Yeni ürün ekleme (POST)
+        // // ➕ Yeni ürün ekleme (POST)
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public IActionResult AddProduct(Product product)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Products.Add(product);
+        //         _context.SaveChanges();
+        //     }
+        //     return RedirectToAction("Products");
+        // }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddProduct(Product product)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Products.Add(product);
-                _context.SaveChanges();
+                // Eğer validation hatası varsa tekrar aynı view'i dönelim
+                ViewBag.Categories = _context.Categories.ToList();
+                var products = _context.Products.Include(p => p.Category).ToList();
+                return View("Products", products);
             }
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+
             return RedirectToAction("Products");
         }
+
+
+
+
+
+
+
+
+
+
 
         // ❌ Ürün silme
         public IActionResult DeleteProduct(int id)
@@ -74,5 +114,34 @@ namespace MutluSepet.Controllers
             ViewData["Title"] = "Siparişler";
             return View(orders); // Views/Admin/Orders.cshtml
         }
+// ➕ Yeni kategori ekleme (POST)
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult AddCategory(Category category)
+{
+    if (ModelState.IsValid)
+    {
+        _context.Categories.Add(category);
+        _context.SaveChanges();
+    }
+    return RedirectToAction("Categories");
+}
+
+// ❌ Kategori silme
+public IActionResult DeleteCategory(int id)
+{
+    var category = _context.Categories.Find(id);
+    if (category != null)
+    {
+        _context.Categories.Remove(category);
+        _context.SaveChanges();
+    }
+    return RedirectToAction("Categories");
+}
+
+
+
+
+
     }
 }
