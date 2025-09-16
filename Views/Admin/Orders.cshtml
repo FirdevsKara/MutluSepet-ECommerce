@@ -1,0 +1,23 @@
+@model IEnumerable<MutluSepet.Models.Order>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@foreach(var order in Model)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Sipariş ID: @order.Id | Kullanıcı: @order.User.Email | Tarih: @order.CreatedAt
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach(var item in order.Items)
+            {
+                <li class="list-group-item">
+                    @item.Product.Name - @item.Quantity adet - @item.Product.Price.ToString("C")
+                </li>
+            }
+        </ul>
+    </div>
+}
