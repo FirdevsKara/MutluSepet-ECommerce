@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Identity
+@using MutluSepet.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <!-- Giriş yapılmışsa -->
+    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Profilim</a></li>
+    <li>
+        <form asp-area="Identity" asp-page="/Account/Logout" 
+              asp-route-returnUrl="@Url.Action("Index", "Home")" method="post">
+            <button type="submit" class="dropdown-item">Çıkış</button>
+        </form>
+    </li>
+}
+else
+{
+    <!-- Giriş yapılmamışsa -->
+    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a></li>
+    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Kayıt Ol</a></li>
+}

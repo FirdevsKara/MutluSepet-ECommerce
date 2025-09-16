@@ -1,0 +1,52 @@
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-3bn36ht6y4] {
+  white-space: normal; /*Metin satır taşmalarını normal şekilde yapar, yani uzun metinler otomatik olarak alt satıra geçer.*/
+  text-align: center;/*Navbar içindeki yazıyı yatayda ortalar.*/
+  word-break: break-all;/*Kelime çok uzunsa, kelimenin ortasından bile satır atlatabilir. Normalde kelimeler bölünmez.*/
+}
+
+a[b-3bn36ht6y4] {
+   color: #0077cc;/*Tüm <a> etiketlerinin yazı rengini mavi tonunda yapar. */
+}
+
+.btn-primary[b-3bn36ht6y4] {
+  color: #fff;/*Buton yazısını beyaz yapar.*/
+  background-color: #1b6ec2;/*Butonun arka plan rengini mavi yapar.*/
+  border-color: #1861ac;/*Butonun sınır (border) rengini koyu mavi yapar.*/
+}
+
+.nav-pills .nav-link.active[b-3bn36ht6y4], .nav-pills .show > .nav-link[b-3bn36ht6y4] {/*Bu, Bootstrap’in “pill” şeklindeki menülerin aktif durumunu ayarlar.*/
+  color: #fff;/*Aktif sekmenin yazısı beyaz olur.*/
+  background-color: #1b6ec2;/*Arka plan mavi olur.*/
+  border-color: #1861ac;/*Kenar çizgisi koyu mavi olur.*/
+}
+
+.border-top[b-3bn36ht6y4] {
+  border-top: 1px solid #e5e5e5; /*Üst kısmına ince gri bir çizgi ekler.*/
+}
+.border-bottom[b-3bn36ht6y4] {
+  border-bottom: 1px solid #e5e5e5;/*Alt kısmına ince gri bir çizgi ekler.*/
+}
+
+.box-shadow[b-3bn36ht6y4] {/*Elemanın etrafına hafif gölge ekler.*/
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);/*Gölgenin yatay, dikey ve bulanıklık mesafesini ve rengini belirler (hafif siyah, şeffaf gölge).*/
+}
+/*Özet: Kart, kutu gibi öğeleri biraz “kabartmalı” gösterir.*/
+
+
+button.accept-policy[b-3bn36ht6y4] {
+  font-size: 1rem;/*Yazı boyutunu 1 rem olarak ayarlar (genellikle normal metin boyutu).*/
+  line-height: inherit;/*Satır yüksekliğini ebeveyn öğeden alır.*/
+}
+/*Özet: Küçük bir butonun yazısının boyut ve satır yüksekliğini kontrol eder.*/
+
+
+.footer[b-3bn36ht6y4] {
+  position: absolute;/*Sayfadaki konumu tamamen belirlenir, normal akıştan çıkar.*/
+  bottom: 0;/*Sayfanın en altına yapıştırır.*/
+  width: 100%;/*Tüm sayfa genişliğini kaplar.*/
+  white-space: nowrap;/*İçindeki yazılar tek satırda kalır, satır atlamaz.*/
+  line-height: 60px;/*Satır yüksekliğini 60px yapar, genellikle footer yüksekliğiyle eşleştirilir.*/
+}

@@ -1,0 +1,30 @@
+@model IEnumerable<MutluSepet.Models.Product>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Ürünler";
+}
+
+<h2>Ürünler</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Category?.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Stock</td>
+            </tr>
+        }
+    </tbody>
+</table>

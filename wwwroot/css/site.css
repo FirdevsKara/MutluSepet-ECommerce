@@ -1,0 +1,75 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+/*Tüm sayfanın varsayılan font boyutunu belirler.
+14px küçük ekranlar için (<768px), 16px tablet ve üstü için (>=768px).
+Bu, mobil uyumlu tasarım (responsive design) için önemlidir.*/
+
+
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem pink;
+}
+/*Kullanıcı bir butona veya input’a tıkladığında/fokuslandığında göreceği efekt.
+box-shadow ile çift halkalı gölge yaratılmış;İç halka beyaz (0.1rem),Dış halka pembe (0.25rem),Böylece odaklanan eleman daha belirgin olur.*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {/*Sayfanın altına 60px boşluk bırakır.Genellikle footer sabitlemesi için kullanılır; böylece içerik footer ile çakışmaz.*/
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+/* Kategori badge hover */
+.category-badge {
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+}
+.category-badge:hover {
+    background-color: orange;
+}
+
+/* Card hover efekti (opsiyonel) */
+.card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s;
+}
+.category-btn {
+    display: inline-block;/*butonları yan yana sıralamak için.*/
+    padding: 5px 12px;/*kutunun iç boşluğu (daha geniş ve dokunması kolay).*/
+    background-color: orange;/*normal turuncu.*/
+    color: white!important; /* önemli, Bootstrap mavi rengini geçersiz kılmak için *//*yazı rengi pembe.*/
+    border-radius: 5px;/*hafif yuvarlatılmış köşeler.*/
+    text-decoration: none;/*alt çizgi kaldırır.*/
+    font-weight: 500;/*biraz kalın yazı.*/
+    transition: background-color 0.3s;/*hover animasyonu yumuşak geçiş.*/
+}
+
+.category-btn:hover {/*hover durumunda : Arka planda pembe yazı beyaz*/
+    background-color: pink;
+    color: white;
+}
+
+
+.card:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
