@@ -43,34 +43,43 @@ namespace MutluSepet.Controllers
             return View(products); // Views/Admin/Products.cshtml kullanılacak
         }
         // // ➕ Yeni ürün ekleme (POST)
+
         // [HttpPost]
         // [ValidateAntiForgeryToken]
-        // public IActionResult AddProduct(Product product)
+        // public IActionResult AddProduct([Bind("Name,Description,Price,Stock,CategoryId,ImageUrl")]Product product)
         // {
-        //     if (ModelState.IsValid)
+        //     if (!ModelState.IsValid)
         //     {
-        //         _context.Products.Add(product);
-        //         _context.SaveChanges();
+        //         // Eğer validation hatası varsa tekrar aynı view'i dönelim
+        //         ViewBag.Categories = _context.Categories.ToList();
+        //         var products = _context.Products.Include(p => p.Category).ToList();
+        //         return View("Products", products);
         //     }
+
+        //     _context.Products.Add(product);
+        //     _context.SaveChanges();
+
         //     return RedirectToAction("Products");
         // }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddProduct(Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                // Eğer validation hatası varsa tekrar aynı view'i dönelim
-                ViewBag.Categories = _context.Categories.ToList();
-                var products = _context.Products.Include(p => p.Category).ToList();
-                return View("Products", products);
-            }
+        
 
-            _context.Products.Add(product);
-            _context.SaveChanges();
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult AddProduct(Product product)
+{
+    if (!ModelState.IsValid)
+    {
+        var errors = ModelState
+            .SelectMany(x => x.Value.Errors.Select(e => new { x.Key, e.ErrorMessage }))
+            .ToList();
 
-            return RedirectToAction("Products");
-        }
+        return Json(errors); // Hangi alan hatalı görebileceğiz
+    }
+
+    _context.Products.Add(product);
+    _context.SaveChanges();
+    return RedirectToAction("Products");
+}
 
 
 

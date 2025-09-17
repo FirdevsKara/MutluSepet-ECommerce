@@ -1,6 +1,5 @@
 using MutluSepet.Data;    // DbContext
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace MutluSepet.Models
 {
     public class Product
@@ -15,8 +14,11 @@ namespace MutluSepet.Models
         
         public string ImageUrl { get; set; } = string.Empty;       // varsayılan değer
         public int Stock { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; } = null!;           // EF Core için null değil ama başlangıçta boş değil
+        public Category? Category { get; set; }
+
+        
+         public int CategoryId { get; set; }
+        // public Category Category { get; set; } = null!;           // EF Core için null değil ama başlangıçta boş değil
         public List<Comment> Comments { get; set; } = new();      // boş liste ile başlat
     }
 }

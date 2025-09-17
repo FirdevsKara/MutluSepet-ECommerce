@@ -48,27 +48,27 @@
 
             <div class="mb-3">
                 <label class="form-label">Ürün Adı</label>
-                <input asp-for="First().Name" class="form-control" required />
+                <input type="text" name="Name" class="form-control" required />
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Açıklama</label>
-                <textarea asp-for="First().Description" class="form-control" rows="3"></textarea>
+                <textarea name="Description" class="form-control" rows="3"></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Fiyat</label>
-                <input asp-for="First().Price" type="number" step="0.01" class="form-control" required />
+                <input type="number" name="Price" step="0.01" class="form-control" required />
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Stok</label>
-                <input asp-for="First().Stock" type="number" class="form-control" required />
+                <input type="number" name="Stock" class="form-control" required />
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Kategori</label>
-                <select asp-for="First().CategoryId" class="form-select" required>
+                <select name="CategoryId" class="form-select" required>
                     <option value="">Seçiniz...</option>
                     @foreach(var cat in (List<MutluSepet.Models.Category>)ViewBag.Categories)
                     {
@@ -79,7 +79,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Resim URL</label>
-                <input asp-for="First().ImageUrl" class="form-control" placeholder="/images/urun.jpg" />
+                <input type="text" name="ImageUrl" class="form-control" placeholder="/images/urun.jpg" />
             </div>
 
             <div class="text-end">
