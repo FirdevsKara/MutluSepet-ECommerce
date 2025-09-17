@@ -1,4 +1,6 @@
-@model IEnumerable<MutluSepet.Models.Order>
+@using MutluSepet.Models
+@model IEnumerable<Order>
+
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -9,15 +11,18 @@
 {
     <div class="card mb-3">
         <div class="card-header">
-            Sipariş ID: @order.Id | Kullanıcı: @order.User.Email | Tarih: @order.CreatedAt
+            Sipariş ID: @order.Id | Kullanıcı: @order.User.Email | Tarih: @order.OrderDate
         </div>
         <ul class="list-group list-group-flush">
-            @foreach(var item in order.Items)
+            @foreach(var item in order.OrderItems)
             {
                 <li class="list-group-item">
-                    @item.Product.Name - @item.Quantity adet - @item.Product.Price.ToString("C")
+                    @item.Product.Name - @item.Quantity adet - @item.Price.ToString("C") - Toplam: @(item.Quantity * item.Price).ToString("C")
                 </li>
             }
+            <li class="list-group-item fw-bold">
+                Sipariş Toplamı: @order.TotalAmount.ToString("C")
+            </li>
         </ul>
     </div>
 }

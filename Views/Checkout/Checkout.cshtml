@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Adres Bilgileri</h2>
+
+<form asp-action="Checkout" method="post">
+    <div class="mb-3">
+        <label>Adres</label>
+        <input type="text" name="AddressLine" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Şehir</label>
+        <input type="text" name="City" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Posta Kodu</label>
+        <input type="text" name="PostalCode" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Siparişi Tamamla</button>
+</form>

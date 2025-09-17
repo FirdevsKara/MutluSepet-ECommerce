@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MutluSepet.Models; // ApplicationUser, Product, Category vs. burada
 
+
 namespace MutluSepet.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -14,5 +15,6 @@ namespace MutluSepet.Data
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

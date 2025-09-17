@@ -82,15 +82,6 @@ public IActionResult AddProduct(Product product)
 }
 
 
-
-
-
-
-
-
-
-
-
         // ❌ Ürün silme
         public IActionResult DeleteProduct(int id)
         {
@@ -116,7 +107,7 @@ public IActionResult AddProduct(Product product)
         {
             var orders = _context.Orders
                 .Include(o => o.User) // Siparişi veren kullanıcı
-                .Include(o => o.Items)
+                .Include(o => o.OrderItems) //OrderItems yaptım Items di önceden
                     .ThenInclude(i => i.Product) // Sepetteki ürünler
                 .ToList();
 
@@ -147,10 +138,6 @@ public IActionResult DeleteCategory(int id)
     }
     return RedirectToAction("Categories");
 }
-
-
-
-
 
     }
 }

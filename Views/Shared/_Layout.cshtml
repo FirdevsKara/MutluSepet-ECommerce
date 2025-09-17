@@ -55,7 +55,7 @@
           <!-- Sağ: Hesabım (dropdown) / Favoriler / Sepet  -->
          <!-- Sağ: Hesabım (dropdown) / Favoriler / Sepet  -->
 <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row align-items-center">
-    <!-- Hesabım dropdown -->
+    @* <!-- Hesabım dropdown -->
     <li class="nav-item dropdown me-2">
         <a class="nav-link dropdown-toggle" href="#" id="hesabimDropdown" role="button"
            data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,7 +88,55 @@
                 </li>
             }
         </ul>
-    </li>
+    </li> *@
+
+    <!-- Hesabım dropdown -->
+<li class="nav-item dropdown me-2">
+    <a class="nav-link dropdown-toggle" href="#" id="hesabimDropdown" role="button"
+       data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle"></i> Hesabım
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hesabimDropdown">
+        @using Microsoft.AspNetCore.Identity
+        @inject MutluSepet.Data.ApplicationDbContext _context
+
+        @inject SignInManager<MutluSepet.Models.ApplicationUser> SignInManager
+        @inject UserManager<MutluSepet.Models.ApplicationUser> UserManager
+
+        @if (SignInManager.IsSignedIn(User)) 
+        {
+            <!-- Siparişlerim linki -->
+            <li>
+                <a class="dropdown-item" asp-controller="Orders" asp-action="MyOrders">Siparişlerim</a>
+            </li>
+
+            @* <!-- Hesap ayarları -->
+            <li>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Hesap Ayarları</a>
+            </li> *@
+
+            <li><hr class="dropdown-divider"></li>
+
+            <!-- Çıkış butonu -->
+            <li>
+                <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+                    <button type="submit" class="dropdown-item">Çıkış Yap</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <!-- Kullanıcı giriş yapmadıysa Giriş / Kayıt linkleri -->
+            <li>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Kayıt Ol</a>
+            </li>
+        }
+    </ul>
+</li>
+
 
     <!-- Favoriler -->
     <li class="nav-item me-2">

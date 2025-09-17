@@ -1,3 +1,4 @@
+using MutluSepet.Models;
 namespace MutluSepet.Models
 {
     public class Category

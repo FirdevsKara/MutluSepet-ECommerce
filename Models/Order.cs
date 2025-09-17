@@ -1,14 +1,22 @@
-using MutluSepet.Data;    // DbContext
-using MutluSepet.Models;  // Model sınıfları
 
+using MutluSepet.Models;
 namespace MutluSepet.Models
 {
     public class Order
     {
         public int Id { get; set; }
-        public string UserId { get; set; } = string.Empty;        // varsayılan değer
-        public ApplicationUser User { get; set; } = null!;       // EF Core için null değil ama başlangıçta boş değil
-        public List<CartItem> Items { get; set; } = new();       // boş liste ile başlat
-        public DateTime CreatedAt { get; set; } = DateTime.Now;  // varsayılan olarak oluşturulma zamanı
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+        public decimal TotalAmount { get; set; }
+
+        // Adres bilgisi
+        public string AddressLine { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string PostalCode { get; set; } = string.Empty;
+
+        public List<OrderItem> OrderItems { get; set; } = new();
     }
+
 }
