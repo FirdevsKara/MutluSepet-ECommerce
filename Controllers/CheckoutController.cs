@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MutluSepet.Data;
 using MutluSepet.Models;
+using MutluSepet.Models.ViewModels; // <- ViewModel namespace
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace MutluSepet.Controllers
 {
@@ -23,7 +23,7 @@ namespace MutluSepet.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Checkout(string AddressLine, string City, string PostalCode)
+        public async Task<IActionResult> Checkout(CheckoutViewModel model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -39,13 +39,20 @@ namespace MutluSepet.Controllers
                 return RedirectToAction("Index", "Cart");
             }
 
+            if (!ModelState.IsValid)
+            {
+                // Form hatalıysa tekrar göster
+                return View(model);
+            }
+
+            // Siparişi oluştur
             var order = new Order
             {
                 UserId = userId,
                 OrderDate = DateTime.Now,
-                AddressLine = AddressLine,
-                City = City,
-                PostalCode = PostalCode,
+                AddressLine = model.AddressLine,
+                City = model.City,
+                PostalCode = model.PostalCode,
                 TotalAmount = cart.Sum(i => i.Quantity * i.Product.Price),
                 OrderItems = cart.Select(i => new OrderItem
                 {
@@ -57,10 +64,13 @@ namespace MutluSepet.Controllers
 
             _context.Orders.Add(order);
 
-            // Sepeti DB'den temizle
+            // Sepeti temizle
             _context.CartItems.RemoveRange(cart);
 
             await _context.SaveChangesAsync();
+
+            // Ödeme için kart bilgilerini burada kullanabilirsin
+            // Örnek: model.CardNumber, model.ExpiryDate, model.CVV, model.CardName
 
             return RedirectToAction("OrderSuccess");
         }
