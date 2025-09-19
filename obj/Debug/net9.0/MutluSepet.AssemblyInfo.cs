@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MutluSepet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+719c3af2cc1fdcf974f2624463eeea85a16931eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12610bd31d952f862189f6713a67a0e9ce4e1e6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MutluSepet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MutluSepet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

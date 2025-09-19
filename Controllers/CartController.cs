@@ -50,7 +50,7 @@ namespace MutluSepet.Controllers
             }
 
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Favorite");
         }
 
         // Sepetten ürün kaldırma

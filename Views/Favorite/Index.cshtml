@@ -23,10 +23,17 @@ else
                 <td>@item.Product.Name</td>   <!-- Ürün adı -->
                 <td>@item.Product.Price ₺</td> <!-- Ürün fiyatı -->
                 <td>
-                    <!-- Kaldırma butonu -->
-                    <form asp-action="Remove" method="post">
+                    <!-- Favorilerden kaldır butonu -->
+                    <form asp-action="Remove" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="@item.Id" />
                         <button type="submit" class="btn btn-danger">Favorilerden Kaldır</button>
+                    </form>
+
+                    <!-- Sepete ekle butonu -->
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="productId" value="@item.Product.Id" />
+                        <button type="submit" class="btn btn-success">Sepete Ekle</button>
                     </form>
                 </td>
             </tr>
