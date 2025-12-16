@@ -109,4 +109,4 @@ dotnet run
 
 **Geliştirici: Firdevs Kara
 🎓 Computer Engineering Student
-💻 ASP.NET Core & Full-Stack Developer
+💻
