@@ -8,7 +8,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Ürün</th>
@@ -20,8 +20,18 @@ else
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Product.Name</td>   <!-- Ürün adı -->
-                <td>@item.Product.Price ₺</td> <!-- Ürün fiyatı -->
+                <td>
+                    <div class="d-flex align-items-center">
+                        @* <img src="@item.Product.ImageUrl ?? "/images/no-image.png"" 
+                             alt="@item.Product.Name" 
+                             width="60" height="60" class="me-2" /> *@
+                             <img src="@(string.IsNullOrEmpty(item.Product.ImageUrl) ? "/images/no-image.png" : item.Product.ImageUrl)" 
+     alt="@item.Product.Name" width="60" height="60" class="me-2" />
+
+                        <span>@item.Product.Name</span>
+                    </div>
+                </td>
+                <td>@item.Product.Price ₺</td>
                 <td>
                     <!-- Favorilerden kaldır butonu -->
                     <form asp-action="Remove" method="post" style="display:inline;">
